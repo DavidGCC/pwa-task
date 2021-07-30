@@ -26,12 +26,22 @@ export class CheckoutProgressBar extends React.PureComponent {
     }
 
     renderSteps(key) {
-        const { displayValue, step } = this.stepIndex[key];
+        const { 
+            displayValue,
+            step 
+        } = this.stepIndex[key];
         const { checkoutStep } = this.props;
-        const isCompleted = this.stepIndex[checkoutStep].step > step || checkoutStep === DETAILS_STEP;
+        const isCompleted = this.stepIndex[checkoutStep].step > step
+            || checkoutStep === DETAILS_STEP;
         const isActive = checkoutStep === key;
+
         return (
-            <Step isCompleted={isCompleted} isActive={isActive} displayValue={displayValue} step={step} handleProgressChange={this.handleProgressChange} />
+            <Step isCompleted={isCompleted} 
+                isActive={isActive} 
+                displayValue={displayValue} 
+                step={step} 
+                handleProgressChange={this.handleProgressChange} 
+            />
         )
     }
 
@@ -40,9 +50,9 @@ export class CheckoutProgressBar extends React.PureComponent {
     }
 
     render() {
-        const { stepMap, progress } = this.props;
+        const { stepMap } = this.props;
         const stepMapKeys = Object.keys(stepMap);
-        console.log(this.ref.current);
+        
         return (
             <div className="Progress-bar">
                 <div className="bar"></div>
