@@ -20,7 +20,7 @@
 
     .bar-completed {
         @extend .bar;
-        background-color: red;
+        background-color: var(--primary-base-color);
     }
 
 
@@ -39,8 +39,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: rgb(48, 48, 48);
-            background-color: var(--breadcrumbs-background);;
+            background-color: var(--breadcrumbs-background);
         }
         
         .step-index {
@@ -50,25 +49,28 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: rgb(48, 48, 48);
+            color: #0A0A0A;
+            opacity: .7;
             background-color: gainsboro;
             font-size: 1.4rem;
         }
 
         .step-name {
             font-size: 1.6rem;
-            color: rgb(153, 153, 153);
+            color: #0A0A0A;
+            opacity: .5;
         }
     }
 
     .active, .completed {
         .step-index {
             color: #fff;
-            background-color: red;
+            background-color: var(--primary-base-color);
         }
 
         .step-name {
-            color: #000;
+            color: #0A0A0A;
+            opacity: 1;
         }
     }
 }
