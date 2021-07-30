@@ -5,46 +5,49 @@ import {
     SHIPPING_STEP    
 } from "Route/Checkout/Checkout.config";
 
+
+import Step from "./Step.component";
 import "./CheckoutProgressBar.style"
+
 
 export class CheckoutProgressBar extends React.PureComponent {
     constructor(props){
         super(props);
         this.renderSteps = this.renderSteps.bind(this);
+        this.ref = React.createRef();
+        this.state = { progress: "0%" }
+        this.handleProgressChange = this.handleProgressChange.bind(this);
     }
 
     stepIndex = {
-        [SHIPPING_STEP]: 1,
-        [BILLING_STEP]: 2,
-        [DETAILS_STEP]: 3
+        [SHIPPING_STEP]: { displayValue: "Shipping", step: 1 },
+        [BILLING_STEP]: { displayValue: "Review & Payments", step: 2 },
+        [DETAILS_STEP]: { displayValue: "Order Details", step: 3 }
     }
 
-    renderSteps(stepEntry, index) {
-        const [key, value] = stepEntry;
+    renderSteps(key) {
+        const { displayValue, step } = this.stepIndex[key];
         const { checkoutStep } = this.props;
-        const isCompleted = this.stepIndex[checkoutStep] > this.stepIndex[key] || checkoutStep === DETAILS_STEP;
+        const isCompleted = this.stepIndex[checkoutStep].step > step || checkoutStep === DETAILS_STEP;
+        const isActive = checkoutStep === key;
         return (
-            <div className={`step ${checkoutStep === key && "active"} ${isCompleted && "completed"}`}>
-                <div className="outer-margin">
-                    <span className="step-index">
-                        {
-                            isCompleted ? <>&#10003;</> : index + 1
-                        }
-                    </span>
-                </div>
-                <span className="step-name">{value.title}</span>
-            </div>
+            <Step isCompleted={isCompleted} isActive={isActive} displayValue={displayValue} step={step} handleProgressChange={this.handleProgressChange} />
         )
+    }
+
+    handleProgressChange(val) {
+        this.setState({ progress: val });
     }
 
     render() {
         const { stepMap, progress } = this.props;
-        const stepMapEntries = Object.entries(stepMap);
+        const stepMapKeys = Object.keys(stepMap);
+        console.log(this.ref.current);
         return (
             <div className="Progress-bar">
                 <div className="bar"></div>
-                <div className="bar-completed" style={{ width: this.props.progress }}></div>
-                { stepMapEntries.map(this.renderSteps) }
+                <div className="bar-completed" style={{ width: this.state.progress }}></div>
+                { stepMapKeys.map(this.renderSteps) }
             </div>
         )
     }

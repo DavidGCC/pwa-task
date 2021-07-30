@@ -11,15 +11,10 @@ import {
 import CheckoutProgressBar from "Component/ChekoutProgressBar/CheckoutProgressBar.component";
 
 export class Checkout extends SourceCheckout {
+
     renderProgressBar() {
         const { checkoutStep } = this.props;
-        return <CheckoutProgressBar checkoutStep={checkoutStep} stepMap={this.stepMap} progress={this.progressWidth[checkoutStep]} />
-    }
-
-    progressWidth = {
-        [SHIPPING_STEP]: "15%",
-        [BILLING_STEP]: "46%",
-        [DETAILS_STEP]: "100%"
+        return <CheckoutProgressBar checkoutStep={checkoutStep} stepMap={this.stepMap} />
     }
 
 

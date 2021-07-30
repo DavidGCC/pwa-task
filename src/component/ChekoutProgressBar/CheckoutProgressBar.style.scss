@@ -5,11 +5,12 @@
     width: 100%;
     background: var(--breadcrumbs-background);
     min-height: var(--breadcrumbs-height);
+    height: 7rem;
     padding-bottom: 2rem;
     
     .bar {
         position: absolute;
-        background-color: gainsboro;
+        background-color: #c3c3c3;
         width: 100%;
         height: 5px;
         top: 16px;
@@ -17,16 +18,14 @@
         transform: translateY(-25%);
         transition: all 0.5s ease;
     }
-
+    
     .bar-completed {
         @extend .bar;
         background-color: var(--primary-base-color);
     }
-
-
-
+    
     .step {
-        display: inline-flex;
+        display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
@@ -35,7 +34,7 @@
         transition-timing-function: ease;
         
         .outer-margin {
-            width: 50px;
+            width: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -49,25 +48,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #0A0A0A;
-            opacity: .7;
-            background-color: gainsboro;
+            color: #0a0a0a70;
+            background-color: #c3c3c3;
             font-size: 1.4rem;
+            margin-bottom: 0.5rem;
         }
-
+        
         .step-name {
             font-size: 1.6rem;
             color: #0A0A0A;
             opacity: .5;
         }
+        
     }
-
+    
     .active, .completed {
         .step-index {
             color: #fff;
             background-color: var(--primary-base-color);
         }
-
+        
         .step-name {
             color: #0A0A0A;
             opacity: 1;
