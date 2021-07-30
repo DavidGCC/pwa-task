@@ -25,7 +25,6 @@ export class Checkout extends SourceCheckout {
 
     render() {
         return (
-            <>
             <main block="Checkout">
                 {this.renderProgressBar()}
                 <ContentWrapper
@@ -46,7 +45,6 @@ export class Checkout extends SourceCheckout {
                     </div>
                 </ContentWrapper>
             </main>
-            </>
         )
     }
 }

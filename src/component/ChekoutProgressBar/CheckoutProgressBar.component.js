@@ -25,7 +25,7 @@ export class CheckoutProgressBar extends React.PureComponent {
         const isCompleted = this.stepIndex[checkoutStep] > this.stepIndex[key] || checkoutStep === DETAILS_STEP;
         return (
             <div className={`step ${checkoutStep === key && "active"} ${isCompleted && "completed"}`}>
-                <div className="white-margin">
+                <div className="outer-margin">
                     <span className="step-index">
                         {
                             isCompleted ? <>&#10003;</> : index + 1
